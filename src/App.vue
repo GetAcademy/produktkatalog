@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import metadataObj from "@/metadata";
+
 export default {
   name: "App",
   data() {
@@ -23,9 +25,14 @@ export default {
           { navn: "Stålgaffel 22cm", pris: 19, kategori: "gaffel" }
         ],
         tekster: {
-          overskrift: "Bestikkshoppen",
-          velkommen:
-            "Velkommen til Bestikkshoppen AS. Vi håper du får mange flotte handleopplevelser!",
+          forside: {
+            overskrift: "Bestikkshoppen",
+            tekst: "Velkommen til Bestikkshoppen AS. Vi håper du får mange flotte handleopplevelser!",
+            info: {
+              telefon: '987 65 432',
+              slagord: 'Vi bestikker deg!'
+            }
+          },
           kontaktOss: {
             navn: "Bestikkshoppen AS",
             adresse: "Melkeveien 1",
@@ -34,16 +41,9 @@ export default {
             epost: "post@bestikkshoppen.no",
             web: "www.bestikkshoppen.no"
           }
-        },
-        mappinger: {
-          "forside": {"overskrift": 'tekster.overskrift' , "skjema-visning": ''},
-          "kategori-liste": {},
-          "produkt-liste": {},
-          "enkelt-produkt": {},
-          "kontakt-oss": {}
         }
       },
-      metadata: null
+      metadata: metadataObj
     };
   }
 };

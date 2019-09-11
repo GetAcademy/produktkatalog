@@ -10,8 +10,8 @@ for (let sideNavn in metadata.sider) {
   let side = metadata.sider[sideNavn];
   let malNavn = side.mal;
   let mal = metadata.maler[malNavn];
-  console.log(mal.komponenter);
   let tagger = mal.komponenter.map(k => `<${k} :data="${k}.data" :metadata="${k}.metadata"></${k}>`).join('');
+  console.log(sideNavn);
   console.log(tagger);
   let komponent = Vue.component(sideNavn, {
     name: sideNavn,
@@ -25,7 +25,8 @@ for (let sideNavn in metadata.sider) {
     {
       path: '/' + sideNavn,
       name: sideNavn,
-      component: komponent
+      component: komponent,
+      props: true
     });
 }
 
