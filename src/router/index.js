@@ -5,30 +5,29 @@ import metadata from '@/metadata'
 
 Vue.use(Router)
 
-let komponenter = {};
-for (let side of metadata.sider) {
+let routes = [];
+for (let sideNavn in metadata.sider) {
+  let side = metadata.sider[sideNavn];
   let malNavn = side.mal;
-  let mal = metadata.maler[malnavn];
-  let tagger = mal.komponenter.map(k=>`<${k}></${k}>`).join('');
+  let mal = metadata.maler[malNavn];
+  console.log(mal.komponenter);
+  let tagger = mal.komponenter.map(k => `<${k} :data="${k}.data" :metadata="${k}.metadata"></${k}>`).join('');
   console.log(tagger);
-  komponenter[side.navn] = Vue.component(side.navn, {
+  let komponent = Vue.component(sideNavn, {
+    name: sideNavn,
     data: function () {
       return {
       }
     },
-    template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
-  })
+    template: `<div>${tagger}</div>`
+  });
+  routes.push(
+    {
+      path: '/' + sideNavn,
+      name: sideNavn,
+      component: komponent
+    });
 }
-
-let routes = metadata.sider.map(sidenavn => {
-  return {
-    path: '/' + sidenavn,
-    name: sidenavn,
-    component: HelloWorld
-  }
-})
-
-
 
 routes.push({
   path: '/',

@@ -34,6 +34,13 @@ export default {
             epost: "post@bestikkshoppen.no",
             web: "www.bestikkshoppen.no"
           }
+        },
+        mappinger: {
+          "forside": {"overskrift": 'tekster.overskrift' , "skjema-visning": ''},
+          "kategori-liste": {},
+          "produkt-liste": {},
+          "enkelt-produkt": {},
+          "kontakt-oss": {}
         }
       },
       metadata: null

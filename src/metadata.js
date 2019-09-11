@@ -5,7 +5,7 @@ export default
     'kategori-liste': { mal: "listeSide" },
     'produkt-liste': { mal: "listeSide" },
     'enkelt-produkt': { mal: "infoSide" },
-    'kontaktOss': { mal: "infoSide" }
+    'kontakt-oss': { mal: "infoSide" }
   },
   maler: {
     infoSide: {
