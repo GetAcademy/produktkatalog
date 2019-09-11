@@ -1,11 +1,23 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png" />
-    <router-view />
+    <router-view :data="data" :metadata="metadata" />
   </div>
 </template>
 
 <script>
+import Vue from 'vue'
+
+let ButtonCounter = Vue.component('button-counter', {
+  data: function () {
+    return {
+      count: 0
+    }
+  },
+  template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+})
+
+
+
 export default {
   name: "App",
   data() {
@@ -36,45 +48,28 @@ export default {
           }
         }
       },
-      metadata: {
-        sider: {
-          forside: { mal: "infoSide" },
-          kategoriListe: { mal: "listeSide" },
-          produktListe: { mal: "listeSide" },
-          enkeltProdukt: { mal: "infoSide" },
-          kontaktOss: { mal: "infoSide" }
-        },
-        maler: {
-          infoSide: {
-            komponenter: ["overskrift", "skjema-visning"],
-            layout: {
-              rader: "200px auto",
-              kolonner: "auto",
-              mal: ["overskrift", "skjema-visning"]
-            }
-          },
-          listeSide: {
-            komponenter: ["overskrift", "liste-visning"],
-            layout: {
-              rader: "200px auto",
-              kolonner: "auto",
-              mal: ["overskrift", "skjema-visning"]
-            }
-          }
-        }
-      }
+      metadata: null
     };
-  }
+    },
+    created() {
+      this.$router.routes.push(
+        {
+          path: '/count',
+          name: 'button-counter',
+          component: ButtonCounter
+        });
+    }
 };
 </script>
 
 <style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
+  #app {
+    font-family: "Avenir", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+  }
 </style>
