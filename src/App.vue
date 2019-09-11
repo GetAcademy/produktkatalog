@@ -5,19 +5,6 @@
 </template>
 
 <script>
-import Vue from 'vue'
-
-let ButtonCounter = Vue.component('button-counter', {
-  data: function () {
-    return {
-      count: 0
-    }
-  },
-  template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
-})
-
-
-
 export default {
   name: "App",
   data() {
@@ -36,8 +23,9 @@ export default {
           { navn: "Stålgaffel 22cm", pris: 19, kategori: "gaffel" }
         ],
         tekster: {
-          overskrift: 'Bestikkshoppen',
-          velkommen: "Velkommen til Bestikkshoppen AS. Vi håper du får mange flotte handleopplevelser!",
+          overskrift: "Bestikkshoppen",
+          velkommen:
+            "Velkommen til Bestikkshoppen AS. Vi håper du får mange flotte handleopplevelser!",
           kontaktOss: {
             navn: "Bestikkshoppen AS",
             adresse: "Melkeveien 1",
@@ -50,26 +38,17 @@ export default {
       },
       metadata: null
     };
-    },
-    created() {
-      this.$router.routes.push(
-        {
-          path: '/count',
-          name: 'button-counter',
-          component: ButtonCounter
-        });
-    }
+  }
 };
 </script>
 
 <style>
-
-  #app {
-    font-family: "Avenir", Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-  }
+#app {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
 </style>

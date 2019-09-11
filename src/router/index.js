@@ -7,6 +7,10 @@ Vue.use(Router)
 
 let komponenter = {};
 for (let side of metadata.sider) {
+  let malNavn = side.mal;
+  let mal = metadata.maler[malnavn];
+  let tagger = mal.komponenter.map(k=>`<${k}></${k}>`).join('');
+  console.log(tagger);
   komponenter[side.navn] = Vue.component(side.navn, {
     data: function () {
       return {
